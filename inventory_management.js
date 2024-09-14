@@ -46,3 +46,18 @@ function displayProductDetails(product){
 }
 // Commit message: "Create displayProductDetails function"
 
+function updateStock(product, unitsSold){
+    product.quantity -= unitsSold;
+    if(product.quantity <= 0){
+        product.quantity = 0; // to ensure that it can't be a negative number
+        console.log("${product.name} is now Out of Stock");
+    }
+    else if(product.quantity <= product.lowStockLevel){
+        console.log("${product.name} is Low Stock with ${product.quantity} units left") 
+    }
+    else {
+        console.log("${product.name} has ${product.quantity} units")
+    }
+}
+// Commit message: "Create updateStock function"
+
