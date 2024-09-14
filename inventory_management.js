@@ -81,3 +81,21 @@ function calculateInventoryValue(inventory){
 }
 
 //Commit message: "Create calculateInventoryValue function"
+
+function processSale(inventory, productName, unitsSold){
+    let productFound = false;
+
+    for (let i = 0; i < inventory.length; i++){
+        const product = inventory[i];
+        if (product.name === productName){
+            productFound = true;
+            updateSold = (product, unitsSold);
+            break;
+        }
+        }
+    if (!productFound){
+        console.log("Error message");
+    }
+}
+
+//Commit message: "Create processSale function"
