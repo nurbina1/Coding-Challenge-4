@@ -34,15 +34,15 @@ const inventory = [
 
 function displayProductDetails(product){
     let stockStatus;
-    if(product.quantity <= lowStockLevel){
+    if(product.quantity <= product.lowStockLevel){
         stockStatus = "Low Stock";
     } else {
         stockStatus = "In Stock";
     }
-    console.log("Product Name: ${product.name}");
-    console.log("Price: ${product.price}");
-    console.log("Quantity in Stock: ${product.quantity}");
-    console.log("Stock Status: ${product.stockStatus}");
+    console.log(`Product Name: ${product.name}`);
+    console.log(`Price: ${product.price}`);
+    console.log(`Quantity in Stock: ${product.quantity}`);
+    console.log(`Stock Status: ${stockStatus}`);
 }
 // Commit message: "Create displayProductDetails function"
 
@@ -50,25 +50,24 @@ function updateStock(product, unitsSold){
     product.quantity -= unitsSold;
     if(product.quantity <= 0){
         product.quantity = 0; // to ensure that it can't be a negative number
-        console.log("${product.name} is now Out of Stock");
+        console.log(`${product.name} is now Out of Stock`);
     }
     else if(product.quantity <= product.lowStockLevel){
-        console.log("${product.name} is Low Stock with ${product.quantity} units left") 
+        console.log(`${product.name} is Low Stock with ${product.quantity} units left`);
     }
     else {
-        console.log("${product.name} has ${product.quantity} units")
+        console.log(`${product.name} has ${product.quantity} units`);
     }
 }
 // Commit message: "Create updateStock function"
 
 function checkLowStock(inventory){
     for(let i = 0; i < inventory.length; i++){
-        if(inventory[i].quantity < inventory[i].lowStockLevel){
-            console.log("${inventory[i].name} is in Low Stock with only ${inventory[i].quantity} units left")
+        if(inventory[i].quantity <= inventory[i].lowStockLevel){
+            console.log(`${inventory[i].name} is in Low Stock with only ${inventory[i].quantity} units left`);
         }
     }
 }
-
 // Commit message: "Create checkLowStock function"
 
 function calculateInventoryValue(inventory){
@@ -79,8 +78,7 @@ function calculateInventoryValue(inventory){
     }
     return value;
 }
-
-//Commit message: "Create calculateInventoryValue function"
+// Commit message: "Create calculateInventoryValue function"
 
 function processSale(inventory, productName, unitsSold){
     let productFound = false;
@@ -89,13 +87,13 @@ function processSale(inventory, productName, unitsSold){
         const product = inventory[i];
         if (product.name === productName){
             productFound = true;
-            updateSold = (product, unitsSold);
+            updateStock(product, unitsSold);
             break;
         }
-        }
+    }
     if (!productFound){
-        console.log("Error message");
+        console.log("Error: Product not found");
     }
 }
-
-//Commit message: "Create processSale function"
+// Commit message: "Create processSale function"
+//Commit last changes
