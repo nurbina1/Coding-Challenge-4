@@ -70,3 +70,14 @@ function checkLowStock(inventory){
 }
 
 // Commit message: "Create checkLowStock function"
+
+function calculateInventoryValue(inventory){
+    let value = 0; // we initialize the value here
+    for(let i = 0; i < inventory.length; i++){
+        const product = inventory[i];
+        value += product.price * product.quantity;
+    }
+    return value;
+}
+
+//Commit message: "Create calculateInventoryValue function"
