@@ -32,3 +32,17 @@ const inventory = [
 ];
 // Commit message: "Initialize inventory with product object"
 
+function displayProductDetails(product){
+    let stockStatus;
+    if(product.quantity <= lowStockLevel){
+        stockStatus = "Low Stock";
+    } else {
+        stockStatus = "In Stock";
+    }
+    console.log("Product Name: ${product.name}");
+    console.log("Price: ${product.price}");
+    console.log("Quantity in Stock: ${product.quantity}");
+    console.log("Stock Status: ${product.stockStatus}");
+}
+// Commit message: "Create displayProductDetails function"
+
