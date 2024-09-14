@@ -61,3 +61,12 @@ function updateStock(product, unitsSold){
 }
 // Commit message: "Create updateStock function"
 
+function checkLowStock(inventory){
+    for(let i = 0; i < inventory.length; i++){
+        if(inventory[i].quantity < inventory[i].lowStockLevel){
+            console.log("${inventory[i].name} is in Low Stock with only ${inventory[i].quantity} units left")
+        }
+    }
+}
+
+// Commit message: "Create checkLowStock function"
